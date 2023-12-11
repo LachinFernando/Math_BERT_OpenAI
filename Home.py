@@ -77,7 +77,7 @@ def extract_embedding(text):
 
 @st.cache_data
 def load_embeddings():
-    embeddings = pd.concat(list(map(pd.read_csv, ["chunk_{}.csv".format(chunk_number) for chunk_number in range(NUM_CHUNKS)])), ignore_index = True)
+    embeddings = pd.concat(list(map(pd.read_csv, ["OpenAIchunk_{}.csv".format(chunk_number) for chunk_number in range(NUM_CHUNKS)])), ignore_index = True)
     return np.array(embeddings.iloc[:,:-1].values), embeddings[QUESTION_COLUMN_NAME].to_list()
 
 
