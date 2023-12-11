@@ -8,7 +8,7 @@ import torch
 openai.api_key = st.secrets["OPENAI_API_KEY"]
   
 st.markdown("# MATH WORLD")
-
+st.markdown(openai.api_key)
 #MODEL_NAME = "all-MiniLM-L12-v2"
 EMBEDDING_CSV = "embeddings.csv"
 QUESTION_COLUMN_NAME = "Questions"
