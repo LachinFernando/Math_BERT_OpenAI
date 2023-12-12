@@ -7,7 +7,7 @@ import torch
 
 openai.api_key = st.secrets["OPENAI_API_KEY"]
   
-st.markdown("# MATH WORLD")
+st.markdown("# MATH WORLD HELLO")
 
 #MODEL_NAME = "all-MiniLM-L12-v2"
 EMBEDDING_CSV = "embeddings.csv"
