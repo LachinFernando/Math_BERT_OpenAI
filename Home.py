@@ -11,7 +11,7 @@ st.markdown("# MATH WORLD")
 
 #MODEL_NAME = "all-MiniLM-L12-v2"
 EMBEDDING_CSV = "embeddings.csv"
-QUESTION_COLUMN_NAME = "Questions"
+QUESTION_COLUMN_NAME = "Question"
 NUM_CHUNKS = 5
 MODEL = "text-embedding-ada-002"
 
