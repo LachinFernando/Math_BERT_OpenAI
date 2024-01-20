@@ -114,17 +114,44 @@ def get_similar_question(query, num_questions, question_embeddings, main_questio
 
 def answers_holders(*args, answers):
 
-    for index, (questions, answer) in enumerate(zip(args, answers)):
-        answers_div = f"""
+    for index, (question, answer) in enumerate(zip(args, answers)):
+        question_div = f"""
             <div class="answers">
                 <h5>Similar Question: {index+1}</h5>
-                <p><strong>{questions}</strong></p>
+                <p><strong>{question}</strong></p>
             </div>
         """
+ #set the div
+        st.markdown(question_div, unsafe_allow_html = True)
+        time.sleep(2)
+        answer = answer.replace('.', '**').replace('####', '**')
+        steps = answer.split('**')
+        for step in steps:
+            if step.strip():
+                answer_div = f"""
+                <div class="step">
+                <p><strong>{step.strip()}</strong></p>
+                </div>
+                """
+                st.markdown(answer_div, unsafe_allow_html = True)
+                time.sleep(2)
+        time.sleep(2)
 
-        #set the div
-        st.markdown(answers_div, unsafe_allow_html = True)
+def update_feedback(interact_date, user_question, user_feedback):
+    if not os.path.exists(FEEDBACK_CSV):
+        feedback_data = pd.DataFrame(columns = [FEEDBACK_COLUMN_ONE, FEEDBACK_COLUMN_TWO, FEEDBACK_COLUMN_THREE])
+        feedback_data.to_csv(FEEDBACK_CSV, index = False)
 
+    feedback_df = pd.read_csv(FEEDBACK_CSV)
+
+    metadata = {}
+    metadata[FEEDBACK_COLUMN_ONE] = interact_date
+    metadata[FEEDBACK_COLUMN_TWO] = user_question
+    metadata[FEEDBACK_COLUMN_THREE] = user_feedback
+    feedback_df_new = pd.concat([feedback_df, pd.DataFrame(metadata, index = [0])], ignore_index = True)
+    feedback_df_new.to_csv(FEEDBACK_CSV, index = False)
+    print("Saved successfully")
+    return True
 
 #app design
 st.title("Math Minds")
