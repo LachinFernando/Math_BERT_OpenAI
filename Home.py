@@ -13,6 +13,11 @@ st.markdown("# MATH WORLD")
 EMBEDDING_CSV = "embeddings.csv"
 QUESTION_COLUMN_NAME = "Question"
 ANSWER_COLUMN_NAME = "Answer"
+FEEDBACK_CSV = "feedback.csv"
+FEEDBACK_COLUMN_ONE = "Date"
+FEEDBACK_COLUMN_TWO = "Question"
+FEEDBACK_COLUMN_THREE = "Feedback"
+FEEDBACK_COLUMN_FOUR = "Answer Provided"
 NUM_CHUNKS = 5
 MODEL = "text-embedding-ada-002"
 
@@ -83,7 +88,7 @@ def load_embeddings():
 
 
 #load models
-embeddings, questions_db = load_embeddings()
+embeddings, questions_db, answers_db = load_embeddings()
 
 
 def get_similar_question(query, num_questions, question_embeddings, main_questions, main_answers):
@@ -172,10 +177,10 @@ with tab1:
 
         if num_questions:
             #get the similar questions
-            similar_questions = get_similar_question([question], num_questions, embeddings, questions_db, answers_db)
+            similar_questions, similar_answers = get_similar_question([question], num_questions, embeddings, questions_db, answers_db)
 
             #set the answers
-            answers_holders(*similar_questions)
+            answers_holders(*similar_questions, answers =similar_answers)
 
             #set the user to true
             st.session_state.user = True
