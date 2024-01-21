@@ -4,6 +4,7 @@ from sentence_transformers import util
 import pandas as pd
 import numpy as np
 import torch
+import os
 
 openai.api_key = st.secrets["OPENAI_API_KEY"]
   
