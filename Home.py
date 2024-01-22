@@ -6,7 +6,7 @@ import numpy as np
 import torch
 import os
 import time
-import datetime
+from datetime import datetime
 
 openai.api_key = st.secrets["OPENAI_API_KEY"]
   
