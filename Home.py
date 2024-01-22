@@ -73,6 +73,9 @@ if 'user' not in st.session_state:
 if 'question' not in st.session_state:
     st.session_state.question = None
 
+def disabled():
+    st.session_state.disabled = True
+
 #this is to download the transformer model
 #this takes some times
 # this is cached unless otherwise model will download again and again
