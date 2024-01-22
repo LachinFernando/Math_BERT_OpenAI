@@ -73,6 +73,10 @@ if 'user' not in st.session_state:
 if 'question' not in st.session_state:
     st.session_state.question = None
 
+#disable in session state
+if 'disabled' not in st.session_state:
+    st.session_state.disabled = False
+
 def disabled():
     st.session_state.disabled = True
 
