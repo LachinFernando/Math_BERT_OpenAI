@@ -8,6 +8,7 @@ import os
 import time
 from datetime import datetime
 import seaborn as sns
+import matplotlib.pyplot as plt
 
 openai.api_key = st.secrets["OPENAI_API_KEY"]
   
