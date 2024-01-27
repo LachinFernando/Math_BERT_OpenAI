@@ -230,45 +230,35 @@ with tab1:
             button_state = True
 
             with st.sidebar:
-                st.title("Feedback")
-                st.write("Your feedback is much appreciated for improvemment of the web application.")
-                st.subheader("How helpful was this AI Generated Response towards helping you solve this probelm?")
-
-                #create columns
-                col1, col2, col3, col4, col5, col6, col7 = st.columns(7)
-
-                with col1:
-                    #set feedback buttons
-                    if st.button("0 (Actively Harmful)", type = "primary", on_click=disabled, disabled=st.session_state.disabled, use_container_width = True):
-                        feedback_state = update_feedback(datetime.now(), question, "0")
-
-                with col2:
-                    if st.button("1 (Very Harmful)", type = "primary", on_click=disabled, disabled=st.session_state.disabled, use_container_width = True):
-                        feedback_state = update_feedback(datetime.now(), question, "1")
-
-                with col3:
-                    if st.button("2 (Somewhat Harmful)", type = "primary", on_click=disabled, disabled=st.session_state.disabled, use_container_width = True):
-                        feedback_state = update_feedback(datetime.now(), question, "2")
-                      
-                with col4:
-                    if st.button("3 (Unlikely to help,but unlikely to hurt)", type = "primary", on_click=disabled, disabled=st.session_state.disabled, use_container_width = True):
-                        feedback_state = update_feedback(datetime.now(), question, "3")     
-                      
-                with col5:
-                    if st.button("4 (Somewhat Helpful)", type = "primary", on_click=disabled, disabled=st.session_state.disabled, use_container_width = True):
-                        feedback_state = update_feedback(datetime.now(), question, "4")
-                      
-                with col6:
-                    if st.button("5 (Very Helpful)", type = "primary", on_click=disabled, disabled=st.session_state.disabled, use_container_width = True):
-                        feedback_state = update_feedback(datetime.now(), question, "5")
-                      
-                with col7:
-                    if st.button("6 (Extremely Helpful)", type = "primary", on_click=disabled, disabled=st.session_state.disabled, use_container_width = True):
-                        feedback_state = update_feedback(datetime.now(), question, "6")
- 
-                #say thank you if the feedback is given
-                if feedback_state:
-                    st.header("Thank You For Your Feedback!")
+              st.title("Feedback")
+              st.write("Your feedback is much appreciated for improvement of the web application.")
+              st.subheader("How helpful was this AI Generated Response towards helping you solve this problem?")
+              
+              # Remove the use of st.columns and place each button directly in the sidebar
+              if st.button("0 (Actively Harmful)"):
+                  feedback_state = update_feedback(datetime.now(), question, "0")
+          
+              if st.button("1 (Very Harmful)"):
+                  feedback_state = update_feedback(datetime.now(), question, "1")
+          
+              if st.button("2 (Somewhat Harmful)"):
+                  feedback_state = update_feedback(datetime.now(), question, "2")
+          
+              if st.button("3 (Unlikely to help, but unlikely to hurt)"):
+                  feedback_state = update_feedback(datetime.now(), question, "3")
+          
+              if st.button("4 (Somewhat Helpful)"):
+                  feedback_state = update_feedback(datetime.now(), question, "4")
+          
+              if st.button("5 (Very Helpful)"):
+                  feedback_state = update_feedback(datetime.now(), question, "5")
+          
+              if st.button("6 (Extremely Helpful)"):
+                  feedback_state = update_feedback(datetime.now(), question, "6")
+          
+              # Display a thank you message if feedback is given
+              if feedback_state:
+                  st.header("Thank You For Your Feedback!")
 with tab2:
     st.header("Feedback Analysis")
     st.subheader("Feedback Data")
