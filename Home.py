@@ -12,7 +12,6 @@ import matplotlib.pyplot as plt
 
 openai.api_key = st.secrets["OPENAI_API_KEY"]
   
-st.markdown("# MATH WORLD")
 
 #MODEL_NAME = "all-MiniLM-L12-v2"
 EMBEDDING_CSV = "embeddings.csv"
@@ -38,7 +37,7 @@ STYLING = """
 
         .question {
             text-align: justify;
-            box-shadow: 5px 10px 18px grey;
+            box-shadow: 5px 10px 18px blue;
             padding: 10px;
             border-radius: 10px;
             margin-top: 20px;
@@ -47,7 +46,7 @@ STYLING = """
 
         .answers {
             text-align: justify;
-            box-shadow: 5px 10px 18px grey;
+            box-shadow: 5px 10px 18px green;
             padding: 10px;
             border-radius: 10px;
             margin-top: 20px;
@@ -135,7 +134,7 @@ def answers_holders(*args, answers):
         """
  #set the div
         st.markdown(question_div, unsafe_allow_html = True)
-        time.sleep(2)
+        time.sleep(0.5)
         answer = answer.replace('.', '**').replace('####', '**')
         steps = answer.split('**')
         for step in steps:
@@ -165,16 +164,25 @@ def update_feedback(interact_date, user_question, user_feedback):
     print("Saved successfully")
     return True
 
+
 #app design
 st.title("Math Minds")
 
+
 #set an images
-st.image("https://d2zhlgis9acwvp.cloudfront.net/images/uploaded/mathematicians.jpg", caption = "Mathematics")
+st.image("https://d2zhlgis9acwvp.cloudfront.net/images/uploaded/mathematicians.jpg", caption = "Mathematics", width = 550)
+
+st.markdown("### Hello, my name is Pranav!")
+st.markdown("### Welcome to my math tutor designed with AI to help students like you with their word problems.")
+
+with st.sidebar:
+    st.markdown("## :red[Math messing with your vibe?]")
+    st.markdown("Contact me at goelp2020@gmail.com")
 
 #set description
 examples_div = """
     <div class="Examples">
-        <h3>Example questions to help you get started!</h3>
+        <h4>Example questions to help you get started!</h4>
         <ul>
             <li>A box has 5 dozen bottles of apple juice and half a dozen more bottle of orange juice than apple juice. How many bottles are in the box?</li>
             <li>Tim can read 10 pages of a book in 30 minutes.  How many hours will it take him to read 120 pages?</li>
